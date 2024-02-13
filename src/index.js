@@ -1,18 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Search from "./Search";
 import CurrentWeather from "./CurrentWeather";
 import Forecast from "./Forecast";
+import FormatDate from "./FormatDate";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Search />
-    <CurrentWeather />
-    <Forecast />
+    <div class="weather-app">
+      <header>
+        <Search />
+      </header>
+      <main>
+        <h1 class="current-city" id="current-city">
+          Paris
+        </h1>
+        <FormatDate />
+        <CurrentWeather />
+        <Forecast />
+      </main>
+      <footer>
+        <p>
+          This project was coded by
+          <a href="https://github.com/cailyncon" target="_blank">
+            Cailyn Connelly
+          </a>
+          and is
+          <a
+            href="https://github.com/cailyncon/connelly-weather"
+            target="_blank"
+          >
+            on GitHub
+          </a>
+          and
+          <a href="https://connelly-weather.netlify.app" target="_blank">
+            hosted on Netlify
+          </a>
+        </p>
+      </footer>
+    </div>
   </React.StrictMode>
 );
 
