@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import CurrentWeather from "./CurrentWeather";
 
 export default function Search() {
   function search(event) {
@@ -10,7 +12,7 @@ export default function Search() {
 
     let apiKey = "b84b065do096ab8b5a39fb9t38e99a64";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-    axios.get(apiUrl).then(displayTemperature);
+    axios.get(apiUrl).then(CurrentWeather);
   }
   return (
     <form id="search-form">

@@ -1,26 +1,39 @@
-import React from "react";
-import FormatDate from "./FormatDate";
+import React, { useState } from "react";
+import Search from "./Search";
 
 export default function CurrentWeather() {
+  let [temperature, setTemperature] = useState("");
+  let [description, setDescription] = useState("");
+  let [humidity, setHumidity] = useState("");
+  let [wind, setWind] = useState("");
+  let [icon, setIcon] = useState("");
+
+  function displayWeather(event) {
+    setTemperature(Math.round(response.data.temperature.current));
+    setDescription(response.data.condition.description);
+    setHumidity(response.data.temperature.humidity);
+    setWind(response.data.wind.speed);
+    setIcon(
+      <img
+        class="current-temperature-icon"
+        src="${response.data.condition.icon_url}"
+      />
+    );
+  }
+
   return (
     <div class="current-weather">
       <div class="current-temperature">
         <div class="icon-img" id="icon">
-          <img class="current-temperature-icon" src="" />
+          {icon}
         </div>
-        <span class="current-temperature-value" id="current-temp">
-          24
-        </span>
+        <span class="current-temperature-value">{temperature}</span>
         <span class="current-temperature-unit">°F </span>
       </div>
       <div class="current-details">
-        <span id="description">moderate rain </span>
-        <div>
-          Humidity: <span id="humidity">87</span>%
-        </div>
-        <div>
-          Wind: <span id="wind-speed">7.2</span>mph
-        </div>
+        {description}
+        <div>Humidity: {humidity}%</div>
+        <div>Wind: {wind}mph</div>
       </div>
     </div>
   );
